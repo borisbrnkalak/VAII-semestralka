@@ -8,10 +8,11 @@
       <div class="err log" disabled>
         <p></p>
       </div>
-      <form action="services/login.php" method="POST" class="modal__form log">
-        <input name="login-email" type="text" class="username" placeholder="email" value="borisbrnkalak@gmail.com">
-        <input name="login-password" type="password" class="password" placeholder="password" value="aaaa">
-        <input type="text" class="error-message-login" disabled value="<?php /*echo $_SESSION['login-result'] */?>">
+      <form action="{{ route("login") }}" method="POST" class="modal__form log">
+        @csrf
+        <input name="email" type="text" class="username" placeholder="email" value="admin@admin.com">
+        <input name="password" type="password" class="password" placeholder="password" value="uwu">
+        <input type="text" class="error-message-login" disabled value="">
         <button type="submit" name="submit-btn" class='btn'>Done</button>
       </form>
 
@@ -28,12 +29,13 @@
       <div class="err reg" disabled>
         <p></p>
       </div>
-      <form action="services/register.php" method="POST" class="modal__form reg">
-        <input name="register-name" type="text" class="fullname" placeholder="Full name">
-        <input name="register-email" type="text" class="username" placeholder="Username(email)">
-        <input name="register-password" type="password" placeholder="password atleast(6 chars)" class="password">
-        <input name="register-confirm-password" type="password" placeholder="confirm-password" class="confirm-password">
-        <input type="text" class="error-message-register" value="<?php/* echo $_SESSION['register-result']*/ ?>" disabled>
+      <form action="{{ route("register") }}" method="POST" class="modal__form reg">
+        @csrf
+        <input name="name" type="text" class="fullname" placeholder="Full name">
+        <input name="email" type="text" class="username" placeholder="Username(email)">
+        <input name="password" type="password" placeholder="password atleast(6 chars)" class="password">
+        <input name="password_confirmation" type="password" placeholder="confirm-password" class="confirm-password">
+        <input type="text" class="error-message-register" value="" disabled>
         <button type="submit" name="register-btn" class='btn'>Done</button>
       </form>
 

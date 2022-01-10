@@ -43,18 +43,30 @@
         </p>
       </div>
       <div class="formular-element">
-        <form action="services/contact-data.php" method="POST" class="formular">
+        <form action="{{ route("contact.store") }}" method="POST" class="formular">
+          @csrf
           <div class="contact-info">
             <p>
-              <?php/* echo $_SESSION['contact-result']*/ ?>
+              @if ($errors->any())
+                <div class="error-wrapper">
+                    <h2 class="error-wrapper-heading">Form is filled wrong</h2>
+                    <ol class="error-wrapper-list">
+                        @foreach ($errors->all() as $error)
+                        <li>
+                            <p class="error-item">{{ $error }}</p>
+                        </li>
+                        @endforeach
+                    </ol>
+                </div>
+                @endif
             </p>
           </div>
           <div class="inputs">
-            <input type="email" name="email" placeholder="YOUR EMAIL" value="<?php /*echo isset($_COOKIE['is-logged']) ?  $user->getMail() : ""*/ ?>" />
-            <input type="text" name="name" placeholder="YOUR NAME" value="<?php /*echo isset($_COOKIE['is-logged']) ?  $user->getFullName() : "" */?>" />
+            <input type="email" name="email" placeholder="YOUR EMAIL" value="{{ auth()->check() == 1 ? auth()->user()->email : old("email") }}" />
+            <input type="text" name="name" placeholder="YOUR NAME" value="{{ auth()->check() == 1 ? auth()->user()->name : old("name") }}" />
           </div>
 
-          <textarea name="message" rows="10" placeholder="MESSAGE"></textarea>
+          <textarea name="message" rows="10" placeholder="MESSAGE"> {{ old("message") }} </textarea>
 
           <button type="submit" name="submit">SUBMIT</button>
         </form>

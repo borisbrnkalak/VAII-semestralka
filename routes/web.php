@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
+use phpDocumentor\Reflection\Types\Resource_;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +20,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PagesController::class, "homePage"])->name("home-page");
 Route::get('overview', [PagesController::class, "overviewPage"])->name("overview-page");
-Route::get('our-team', [PagesController::class, "ourTeamPage"])->name("our-team-page");
-Route::get('testimonials', [PagesController::class, "testimonialsPage"])->name("testimonials-page");
-Route::get('contact', [PagesController::class, "contactPage"])->name("contact-page");
+Route::resource('/our-team', EmployeeController::class)->only(["index", "store", "destroy"])->parameters(['our-team' => 'employee']);
+Route::resource("/testimonials", FeedbackController::class)->except(["show", "create"])->parameters([
+    'testimonials' => 'feedback'
+]);
 Route::get('product', [PagesController::class, "productPage"])->name("product-page");
+Route::resource("/contact", ContactController::class)->only(["index", "store"]);
+
+require __DIR__ . '/auth.php';
