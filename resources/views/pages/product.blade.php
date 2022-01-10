@@ -23,34 +23,9 @@
         <div class="containerr">
             <div class="product-review">
 
-                <?php/*
-                      $beers = Beer::getAll($db);
-                
-                      foreach ($beers as $beer) {
-                        echo '<div class="single-post reveal">
-                                <div class="image">
-                                  <img src="img/Products/' . $beer->getPicture() . '" alt="Product">
-                                </div>
-                              <div class="text">
-                                <div class="price">
-                                  <h2>' . $beer->getPrice() . '€ </h2>
-                                </div>
-                              <div class="name">
-                                <p style="font-weight: bold">' . $beer->getTitle() . '</p>
-                              </div>
-                              <div class="country">
-                                <p style="color: #464646">' . $beer->getCountry() . '</p>
-                              </div>
-                              <div class="desc" style="margin-bottom: 0.5em">
-                                <p style="word-break: break-all">' . $beer->getDescription() . '</p>
-                              </div>
-                              
-                              </div>
-                              <div class="link"><a href="#">Add to cart</a></div>
-                            </div>';
-                      }
-                     */ ?> ?>
-
+                @foreach ($products as $product)
+                    @include('items.product-item', compact('product'))
+                @endforeach
 
             </div>
 
@@ -61,8 +36,9 @@
                         <div class="err-prod">
                             <p style="white-space: pre"></p>
                         </div>
-                        <form action="services/add-product.php" method="POST" class="new-product"
+                        <form action="{{ route('products.store') }}" method="POST" class="new-product"
                             enctype="multipart/form-data">
+                            @csrf
                             <div class="first-row">
                                 <input type="text" name="price" class="form_price" placeholder="Price">
                                 <input type="text" name="name" class="form_name" placeholder="Name">

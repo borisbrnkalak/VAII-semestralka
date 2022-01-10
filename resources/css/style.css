@@ -1544,6 +1544,17 @@ textarea {
     transition: 0.5s;
 }
 
+.single-post .footer-icons {
+    margin-top: 2em;
+    justify-content: center;
+    gap: 2em;
+}
+
+.single-post .footer-icons i {
+    font-size: 2em;
+    color: #b28564;
+}
+
 .footer-icons i:hover {
     color: #464646;
 }

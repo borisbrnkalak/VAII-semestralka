@@ -4,6 +4,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use phpDocumentor\Reflection\Types\Resource_;
 
@@ -24,7 +25,7 @@ Route::resource('/our-team', EmployeeController::class)->only(["index", "store",
 Route::resource("/testimonials", FeedbackController::class)->except(["show", "create"])->parameters([
     'testimonials' => 'feedback'
 ]);
-Route::get('product', [PagesController::class, "productPage"])->name("product-page");
+Route::resource("/products", ProductController::class)->except(["show", "create"]);
 Route::resource("/contact", ContactController::class)->only(["index", "store"]);
 
 require __DIR__ . '/auth.php';

@@ -40,8 +40,8 @@
                     href="{{ route('testimonials.index') }}">TESTIMONIALS</a></li>
             <li class="{{ Request::routeIs('contact.index') ? 'selected' : '' }}"><a
                     href="{{ route('contact.index') }}">CONTACT</a></li>
-            <li class="{{ Request::routeIs('product-page') ? 'selected' : '' }}"><a
-                    href="{{ route('product-page') }}">PRODUCT</a></li>
+            <li class="{{ Request::routeIs('products.index') ? 'selected' : '' }}"><a
+                    href="{{ route('products.index') }}">PRODUCT</a></li>
         </ul>
 
         <ul class="social">
