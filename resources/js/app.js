@@ -2,6 +2,7 @@ import "./bootstrap";
 import "./hamburger";
 //import "./check-forms";
 import "./checkAddProduct";
+import "./checkAddEmployee";
 import "./checkFeedback";
 import "./checkLogin";
 import "./checkPassword";

@@ -14,11 +14,11 @@
             <div class="paralax-text">
                 <p>About us</p>
                 <h1 style="
-                              font-family: 'Roboto Condensed';
-                              font-weight: 800;
-                              font-size: 3.1em;
-                              margin-bottom: 1em;
-                            ">
+                                                                          font-family: 'Roboto Condensed';
+                                                                          font-weight: 800;
+                                                                          font-size: 3.1em;
+                                                                          margin-bottom: 1em;
+                                                                        ">
                     WHO WE ARE
                 </h1>
                 <span>Brewing is our life, beer is our water so don’t waste time drinking
@@ -66,14 +66,24 @@
                 @endforeach
 
             </div>
-
-
-
             @auth
-
                 @if (auth()->user()->is_admin == 1)
                     <div class="addEmployee">
                         <h1>Add new employee</h1>
+                        @if ($errors->any())
+                            <div class="error-wrapper">
+                                <h2 class="error-wrapper-heading">Form is filled wrong</h2>
+                                <ol class="error-wrapper-list">
+                                    @foreach ($errors->all() as $error)
+                                        <li>
+                                            <p class="error-item">{{ $error }}</p>
+                                        </li>
+                                    @endforeach
+                                </ol>
+                            </div>
+                        @endif
+
+
                         <div class="err-empl">
                             <p style="white-space: pre;"></p>
                         </div>
@@ -81,9 +91,10 @@
                         <form action="{{ route('our-team.store') }}" class="new-employee" method="POST"
                             enctype="multipart/form-data">
                             @csrf
-                            <input type="text" name="name" placeholder="Employee name">
-                            <textarea name="text" rows="10" placeholder="Employee description"></textarea>
-                            <input type="file" name="image">
+                            <input type="text" name="name" placeholder="Employee name" class="employee_name">
+                            <textarea name="text" rows="10" placeholder="Employee description"
+                                class="employee_text"></textarea>
+                            <input type="file" name="image" class="employee_picture">
                             <button type="submit" name="submit-emp">SUBMIT</button>
                         </form>
                     </div>

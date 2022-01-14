@@ -2,6 +2,26 @@
     box-sizing: border-box;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #b28564;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -835,8 +855,9 @@ html {
     border-bottom: 1px solid #b9b9b9;
 }
 
-.contact-info {
-    width: 98.5%;
+.contact-info,
+.err-empl {
+    padding: 1em 0;
     text-align: center;
     margin-right: 0;
     background-color: #b28564;
@@ -846,7 +867,8 @@ html {
     border-radius: 4px;
 }
 
-.contact-info p {
+.contact-info p,
+.err-empl p {
     padding: 1em 2em;
 }
 
@@ -1485,7 +1507,8 @@ textarea {
 }
 
 .err-prod,
-.err-feed {
+.err-feed,
+.err-empl {
     display: none;
     background: #e25151;
     color: #fff;
@@ -1496,7 +1519,8 @@ textarea {
 }
 
 .err-prod p,
-.err-feed p {
+.err-feed p,
+.err-empl p {
     line-height: 1.8;
     padding: 0.5em;
 }
@@ -1779,6 +1803,15 @@ textarea {
 .addProduct button:hover {
     color: #181818;
     border-color: #181818;
+}
+
+.edit-feedback.product .first-row {
+    width: 98.5%;
+}
+
+.edit-feedback.product .form_price,
+.edit-feedback.product .form_name {
+    width: 50%;
 }
 
 @media screen and (max-width: 1300px) {

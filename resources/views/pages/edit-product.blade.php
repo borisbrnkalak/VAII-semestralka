@@ -12,11 +12,11 @@
         <div class="paralax container">
             <div class="paralax-text black-text">
                 <h1 style="
-                                                             font-family: 'Roboto Condensed';
-                                                             font-weight: 800;
-                                                             font-size: 3.1em;
-                                                             margin-bottom: 1em;
-                                                         ">
+                                font-family: 'Roboto Condensed';
+                                font-weight: 800;
+                                font-size: 3.1em;
+                                margin-bottom: 1em;
+                            ">
                     PRODUCT EDIT
                 </h1>
             </div>
@@ -26,11 +26,10 @@
     <div class="white">
         <div class="containerr">
 
-            <h1>Edit existing product</h1>
             <div class="err-prod">
                 <p style="white-space: pre"></p>
             </div>
-            <form action="{{ route('products.update', $product->id) }}" method="POST" class="new-product"
+            <form action="{{ route('products.update', $product->id) }}" method="POST" class="edit-feedback product"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PUT')

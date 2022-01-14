@@ -1,6 +1,7 @@
-<header class="header {{ Request::routeIs('testimonials*') ? 'white-header' : '' }}">
+<header
+    class="header {{ Request::routeIs('testimonials*') || Request::routeIs('products.edit') ? 'white-header' : '' }}">
     <div class="logo">
-        <img src=" {{ Request::routeIs('testimonials*') ? asset('images/logo-black.png') : asset('images/logo-white.png') }}"
+        <img src=" {{ Request::routeIs('testimonials*') || Request::routeIs('products.edit') ? asset('images/logo-black.png') : asset('images/logo-white.png') }}"
             alt=" LOGO" />
     </div>
 
