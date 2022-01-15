@@ -1,12 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FeedbackController;
-use App\Http\Controllers\PagesController;
-use App\Http\Controllers\ProductController;
-use Illuminate\Support\Facades\Route;
-use phpDocumentor\Reflection\Types\Resource_;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +28,6 @@ Route::resource("/testimonials", FeedbackController::class)->except(["show", "cr
 Route::resource("/products", ProductController::class)->except(["show", "create"]);
 Route::resource("/contact", ContactController::class)->only(["index", "store", "destroy"]);
 
-require __DIR__ . '/auth.php';
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('logout');

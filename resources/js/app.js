@@ -4,15 +4,16 @@ import "./hamburger";
 import "./checkAddProduct";
 import "./checkAddEmployee";
 import "./checkFeedback";
-import "./checkLogin";
+//import "./checkLogin";
 import "./checkPassword";
-import "./checkRegister";
+//import "./checkRegister";
 import "./login-btns";
 import Map from "./map";
 import "./modal";
 import "./parallax-effext";
 import RevealSection from "./reveal-sections";
 import Slider from "./slider";
+import "./react/Authentication";
 
 ("use strict");
 

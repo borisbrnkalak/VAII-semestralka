@@ -1531,6 +1531,24 @@ textarea {
 .error-message-register {
     background: #e25151;
     color: #fff;
+    border-radius: 8px;
+}
+
+.error-message-login p {
+    padding: 0.8em;
+}
+
+.react-btn h1 {
+    display: flex;
+    justify-content: center;
+}
+
+.register-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #b28564;
+    text-decoration: underline;
 }
 
 .error-wrapper {
@@ -1727,7 +1745,7 @@ textarea {
 
 .err {
     margin-top: 0.5em;
-    display: none;
+    /*display: none;*/
 }
 
 .err p {
@@ -2531,6 +2549,10 @@ textarea {
 .hidden {
     visibility: hidden;
     opacity: 0;
+}
+
+.visible {
+    display: block;
 }
 
 .register-now {

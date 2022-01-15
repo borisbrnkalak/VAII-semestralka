@@ -1,29 +1,15 @@
     <a href="#parallax" class="scrollup" id="scroll-up">
         <i class="fas fa-arrow-up scrollup-icon"></i>
     </a>
-
-    <div class="modal hidden">
-        <button class="btn--close-modal">&times;</button>
-        <h1>LOGIN</h1>
-        <div class="err log" disabled>
-            <p></p>
+    @guest
+        <div class="modal hidden">
+            <button class="btn--close-modal">&times;</button>
+            <div class="react-btn" id="login-react">
+            </div>
         </div>
-        <form action="{{ route('login') }}" method="POST" class="modal__form log">
-            @csrf
-            <input name="email" type="text" class="username" placeholder="email" value="admin@admin.com">
-            <input name="password" type="password" class="password" placeholder="password" value="uwu">
-            <input type="text" class="error-message-login" disabled value="">
-            <button type="submit" name="submit-btn" class='btn'>Done</button>
-        </form>
+    @endguest
 
-
-
-        <div class="register-now">
-            <p>No account? Don't worry, you can <a class="register-btn" href="#">register</a> now!</p>
-        </div>
-    </div>
-
-    <div class="register modal hidden">
+    {{-- <div class="register modal hidden">
         <button class="btn--close-modal">&times;</button>
         <h1>REGISTER</h1>
         <div class="err reg" disabled>
@@ -51,6 +37,6 @@
             <button type="submit" name="register-btn" class='btn'>Done</button>
         </form>
 
-    </div>
+    </div> --}}
 
     <div class="overlay hidden"></div>
