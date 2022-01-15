@@ -15,11 +15,11 @@
             <div class="paralax-text black-text">
                 <p>What people say</p>
                 <h1 style="
-                              font-family: 'Roboto Condensed';
-                              font-weight: 800;
-                              font-size: 3.1em;
-                              margin-bottom: 1em;
-                            ">
+                                                  font-family: 'Roboto Condensed';
+                                                  font-weight: 800;
+                                                  font-size: 3.1em;
+                                                  margin-bottom: 1em;
+                                                ">
                     WE DO WHAT WE<br />
                     DO BEST
                 </h1>
@@ -50,6 +50,18 @@
                 @auth
                     <form action="{{ route('testimonials.store') }}" method='POST' class="feedback-form reveal">
                         @csrf
+                        @if ($errors->any())
+                            <div class="error-wrapper">
+                                <h2 class="error-wrapper-heading">Form is filled wrong</h2>
+                                <ol class="error-wrapper-list">
+                                    @foreach ($errors->all() as $error)
+                                        <li>
+                                            <p class="error-item">{{ $error }}</p>
+                                        </li>
+                                    @endforeach
+                                </ol>
+                            </div>
+                        @endif
                         <div class="err-feed">
                             <p></p>
                         </div>

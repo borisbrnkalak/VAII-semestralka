@@ -26,6 +26,6 @@ Route::resource("/testimonials", FeedbackController::class)->except(["show", "cr
     'testimonials' => 'feedback'
 ]);
 Route::resource("/products", ProductController::class)->except(["show", "create"]);
-Route::resource("/contact", ContactController::class)->only(["index", "store"]);
+Route::resource("/contact", ContactController::class)->only(["index", "store", "destroy"]);
 
 require __DIR__ . '/auth.php';

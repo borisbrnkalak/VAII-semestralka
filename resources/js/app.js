@@ -11,7 +11,7 @@ import "./login-btns";
 import Map from "./map";
 import "./modal";
 import "./parallax-effext";
-import "./reveal-sections";
+import RevealSection from "./reveal-sections";
 import Slider from "./slider";
 
 ("use strict");
@@ -38,18 +38,21 @@ function image_effect() {
     else scrollMenu.classList.remove("show-image");
 }
 
-const path = window.location.pathname;
-const page = path.split("/").pop().split(".").at(0);
-
 const covers = document.querySelectorAll(".all-products .movable-products");
 const leftArrow = document.querySelector(".left-arrow a");
 const rightArrow = document.querySelector(".right-arrow a");
 const mapka = document.querySelector("#map");
 
-if (covers) {
+if (covers.length > 0) {
     new Slider(covers, leftArrow, rightArrow);
 }
 
 if (mapka) {
     new Map();
+}
+
+//--- reveal
+const reveals = document.querySelectorAll(".reveal");
+if (reveals) {
+    new RevealSection(reveals);
 }

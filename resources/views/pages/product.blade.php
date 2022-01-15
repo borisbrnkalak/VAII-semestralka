@@ -39,6 +39,18 @@
                         <form action="{{ route('products.store') }}" method="POST" class="new-product"
                             enctype="multipart/form-data">
                             @csrf
+                            @if ($errors->any())
+                                <div class="error-wrapper">
+                                    <h2 class="error-wrapper-heading">Form is filled wrong</h2>
+                                    <ol class="error-wrapper-list">
+                                        @foreach ($errors->all() as $error)
+                                            <li>
+                                                <p class="error-item">{{ $error }}</p>
+                                            </li>
+                                        @endforeach
+                                    </ol>
+                                </div>
+                            @endif
                             <div class="first-row">
                                 <input type="text" name="price" class="form_price" placeholder="Price">
                                 <input type="text" name="name" class="form_name" placeholder="Name">

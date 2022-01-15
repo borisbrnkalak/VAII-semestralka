@@ -2086,7 +2086,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _parallax_effext__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./parallax-effext */ "./resources/js/parallax-effext.js");
 /* harmony import */ var _parallax_effext__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_parallax_effext__WEBPACK_IMPORTED_MODULE_11__);
 /* harmony import */ var _reveal_sections__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./reveal-sections */ "./resources/js/reveal-sections.js");
-/* harmony import */ var _reveal_sections__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(_reveal_sections__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./slider */ "./resources/js/slider.js");
 
  //import "./check-forms";
@@ -2124,19 +2123,24 @@ function image_effect() {
   if (this.scrollY > 1305) scrollMenu.classList.add("show-image");else scrollMenu.classList.remove("show-image");
 }
 
-var path = window.location.pathname;
-var page = path.split("/").pop().split(".").at(0);
 var covers = document.querySelectorAll(".all-products .movable-products");
 var leftArrow = document.querySelector(".left-arrow a");
 var rightArrow = document.querySelector(".right-arrow a");
 var mapka = document.querySelector("#map");
 
-if (covers) {
+if (covers.length > 0) {
   new _slider__WEBPACK_IMPORTED_MODULE_13__["default"](covers, leftArrow, rightArrow);
 }
 
 if (mapka) {
   new _map__WEBPACK_IMPORTED_MODULE_9__["default"]();
+} //--- reveal
+
+
+var reveals = document.querySelectorAll(".reveal");
+
+if (reveals) {
+  new _reveal_sections__WEBPACK_IMPORTED_MODULE_12__["default"](reveals);
 }
 
 /***/ }),
@@ -2765,11 +2769,6 @@ var openRegister = function openRegister(event) {
 };
 
 registerBtn.addEventListener("click", openRegister);
-/*registerBtn.addEventListener("click", function (event) {
-  event && event.preventDefault();
-  modal.classList.remove("hidden");
-  registerWindow.classList.remove("hidden");
-});*/
 
 /***/ }),
 
@@ -2859,42 +2858,49 @@ function setParallaxEffectToDOM(element, startPosition, speed) {
 /*!*****************************************!*\
   !*** ./resources/js/reveal-sections.js ***!
   \*****************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
-var reveals = document.querySelectorAll(".reveal");
-window.addEventListener("scroll", function () {
-  reveals.forEach(function (el) {
-    var windowHeight = window.innerHeight;
-    var revealTop = el.getBoundingClientRect().top;
-    var revealPoint = 150;
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
 
-    if (revealTop < windowHeight - revealPoint) {
-      el.classList.add("active");
-    } else if (el.classList.contains("active")) {
-      el.classList.remove("active");
+var RevealSection = /*#__PURE__*/function () {
+  function RevealSection(reveals) {
+    _classCallCheck(this, RevealSection);
+
+    this.scrollAnimation(reveals);
+  }
+
+  _createClass(RevealSection, [{
+    key: "scrollAnimation",
+    value: function scrollAnimation(reveals) {
+      window.addEventListener("scroll", function () {
+        reveals.forEach(function (el) {
+          var windowHeight = window.innerHeight;
+          var revealTop = el.getBoundingClientRect().top;
+          var revealPoint = 150;
+
+          if (revealTop < windowHeight - revealPoint) {
+            el.classList.add("active");
+          } else if (el.classList.contains("active")) {
+            el.classList.remove("active");
+          }
+        });
+      });
     }
-  });
-});
-/*const reveal = function (entries, observer) {
-  const [entry] = entries;
+  }]);
 
-  if (!entry.isIntersecting) return;
+  return RevealSection;
+}();
 
-  entry.target.classList.add("active");
-};
-
-const sectionObserver = new IntersectionObserver(reveal, {
-  root: null,
-  threshold: 0.1,
-});
-
-reveals.forEach(function (section) {
-  section.classList.remove("active");
-  sectionObserver.observe(section);
-});*/
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RevealSection);
 
 /***/ }),
 

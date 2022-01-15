@@ -1167,6 +1167,33 @@ html {
     color: #181818;
 }
 
+.human .social-links {
+    display: flex;
+    align-items: center;
+}
+
+.employee-del button {
+    background: transparent;
+    cursor: pointer;
+    color: #b28564;
+    border: none;
+    transition: 0.5s;
+    font-size: 2em;
+}
+
+.del-btn {
+    background: transparent;
+    cursor: pointer;
+    color: #b28564;
+    border: none;
+    transition: 0.5s;
+}
+
+.employee-del button:hover,
+.del-btn:hover {
+    color: #181818;
+}
+
 .human .social-links i {
     margin-right: 0.5em;
 }
@@ -1506,13 +1533,22 @@ textarea {
     color: #fff;
 }
 
+.error-wrapper {
+    text-align: center;
+    padding: 2em 0;
+    background: #e25151;
+    color: #fff;
+    margin: 1em 0;
+    border-radius: 4px;
+    font-family: "Roboto Slab", Arial, sans-serif;
+}
+
 .err-prod,
 .err-feed,
 .err-empl {
     display: none;
     background: #e25151;
     color: #fff;
-    width: 98.5%;
     margin: 1em 0;
     border-radius: 4px;
     font-family: "Roboto Slab", Arial, sans-serif;
@@ -1523,6 +1559,39 @@ textarea {
 .err-empl p {
     line-height: 1.8;
     padding: 0.5em;
+}
+
+.one-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    margin: 2em 0;
+}
+
+.no-width {
+    width: auto;
+}
+
+.name-column,
+.email-column,
+.message-column,
+.delete-column {
+    width: 100%;
+    text-align: center;
+}
+
+.name-column p,
+.email-column p,
+.message-column p,
+.icon-column p {
+    word-break: break-all;
+}
+
+.main {
+    font-size: 1.2em;
+    font-family: "Roboto Condensed", sans-serif;
+    color: #b28564;
+    text-decoration: underline;
 }
 
 .addEmployee h1 {

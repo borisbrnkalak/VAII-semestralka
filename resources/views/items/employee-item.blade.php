@@ -13,7 +13,7 @@
 
                 @auth
                     @if (auth()->user()->is_admin == 1)
-                        <form action="{{ route('our-team.destroy', $employee->id) }}" method="post">
+                        <form action="{{ route('our-team.destroy', $employee->id) }}" method="post" class="employee-del">
                             @csrf
                             @method("DELETE")
                             <button type="submit"><i class="fas fa-trash"></i></button>

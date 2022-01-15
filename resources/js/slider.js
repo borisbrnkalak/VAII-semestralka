@@ -7,11 +7,13 @@ class Slider {
         this.createListenerBtn(leftBtn, "left");
         this.createListenerBtn(rightBtn, "right");
     }
+
     goToSlide(slide) {
         this.elements.forEach(
             (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
         );
     }
+
     createListenerBtn(btn, direction) {
         switch (direction) {
             case "left":

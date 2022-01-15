@@ -43,8 +43,3 @@ const openRegister = function (event) {
 
 registerBtn.addEventListener("click", openRegister);
 
-/*registerBtn.addEventListener("click", function (event) {
-  event && event.preventDefault();
-  modal.classList.remove("hidden");
-  registerWindow.classList.remove("hidden");
-});*/
