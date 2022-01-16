@@ -33,7 +33,7 @@ export default function Register() {
                 })
                 .then((data) => {
                     if (data.status === 200 && data.data.success === true) {
-                        //location.reload();
+                        location.reload();
                     }
                     console.log(data);
                 })
@@ -73,7 +73,7 @@ export default function Register() {
                 setError({ ...error, password: "" });
             } else {
                 passwordEl.current.style.outlineColor = "red";
-                setError({ ...error, password: "Ty Ďat" });
+                setError({ ...error, password: "Weak password" });
             }
         }
     }, [password]);

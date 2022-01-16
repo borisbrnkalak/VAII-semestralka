@@ -17,7 +17,7 @@ export default function Login() {
                 })
                 .then((data) => {
                     if (data.status === 200 && data.data.success === true) {
-                        //location.reload();
+                        location.reload();
                     }
                     console.log(data);
                 })

@@ -2860,7 +2860,8 @@ function Login() {
         email: email,
         password: password
       }).then(function (data) {
-        if (data.status === 200 && data.data.success === true) {//location.reload();
+        if (data.status === 200 && data.data.success === true) {
+          location.reload();
         }
 
         console.log(data);
@@ -3042,7 +3043,8 @@ function Register() {
         password: password,
         password_confirmation: confirmPassword
       }).then(function (data) {
-        if (data.status === 200 && data.data.success === true) {//location.reload();
+        if (data.status === 200 && data.data.success === true) {
+          location.reload();
         }
 
         console.log(data);
