@@ -2342,7 +2342,8 @@ textarea {
     border-radius: 8px;
 }
 
-.error-message-login p {
+.error-message-login p,
+.error-message-register p {
     padding: 0.8em;
 }
 

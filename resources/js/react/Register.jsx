@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 
 export default function Register() {
     const [name, setName] = useState("");
@@ -11,8 +12,10 @@ export default function Register() {
         password: "",
         confirmPassword: "",
     });
-    const [isValid, setIsValid] = useState(false);
+    const [isValid, setIsValid] = useState(true);
     const [serverError, setServerError] = useState([]);
+
+    const passwordEl = useRef(null);
 
     const sendForm = () => {
         if (
@@ -26,20 +29,32 @@ export default function Register() {
                     name: name,
                     email: email,
                     password: password,
-                    confirmPassword: confirmPassword,
+                    password_confirmation: confirmPassword,
                 })
                 .then((data) => {
                     if (data.status === 200 && data.data.success === true) {
-                        location.reload();
+                        //location.reload();
                     }
                     console.log(data);
                 })
                 .catch((error) => {
-                    setServerError(error.response.data.errors.email);
+                    setServerError(error.response.data.errors);
                     console.log(error.response);
                 });
         }
     };
+
+    const strong = new RegExp(
+        "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,})"
+    );
+
+    useEffect(() => {
+        if (name === "") {
+            setError({ ...error, name: "Missing name!" });
+        } else {
+            setError({ ...error, name: "" });
+        }
+    }, [name]);
 
     useEffect(() => {
         if (email.indexOf("@") == -1) {
@@ -53,15 +68,32 @@ export default function Register() {
         if (password === "") {
             setError({ ...error, password: "Missing password!" });
         } else {
-            setError({ ...error, password: "" });
+            if (strong.test(password)) {
+                passwordEl.current.style.outlineColor = "green";
+                setError({ ...error, password: "" });
+            } else {
+                passwordEl.current.style.outlineColor = "red";
+                setError({ ...error, password: "Ty Ďat" });
+            }
         }
     }, [password]);
+
+    useEffect(() => {
+        if (confirmPassword !== password) {
+            setError({
+                ...error,
+                confirmPassword: "Passwords does not match!",
+            });
+        } else {
+            setError({ ...error, confirmPassword: "" });
+        }
+    }, [confirmPassword]);
 
     return (
         <>
             <h1>REGISTER</h1>
             <div
-                className={`err reg ${isValid ? "hidden" : "visible"}`}
+                className={`err reg ${isValid ? "visible" : "hidden"}`}
                 disabled
             >
                 {error.name.length > 0 && <p>{error.name}</p>}
@@ -74,36 +106,60 @@ export default function Register() {
             <form
                 action="{{ route('register') }}"
                 method="POST"
-                class="modal__form reg"
+                className="modal__form reg"
             >
                 <input
-                    className="name"
+                    name="name"
                     type="text"
-                    class="fullname"
+                    className="fullname"
                     placeholder="Full name"
+                    onInput={(event) => {
+                        setName(event.target.value);
+                    }}
                 />
                 <input
-                    className="email"
+                    name="email"
                     type="text"
-                    class="username"
+                    className="username"
                     placeholder="Username(email)"
+                    onInput={(event) => {
+                        setEmail(event.target.value);
+                    }}
                 />
                 <input
-                    className="password"
+                    name="password"
                     type="password"
+                    ref={passwordEl}
                     placeholder="password atleast(6 chars)"
-                    class="password"
+                    className="password"
+                    onInput={(event) => {
+                        setPassword(event.target.value);
+                    }}
                 />
                 <input
-                    className="password_confirmation"
+                    name="password_confirmation"
                     type="password"
                     placeholder="confirm-password"
-                    class="confirm-password"
+                    className="confirm-password"
+                    onInput={(event) => {
+                        setConfirmPassword(event.target.value);
+                    }}
                 />
                 <div className="error-message-register">
-                    {serverError.map((error, counter) => {
+                    {serverError.name?.map((error, counter) => {
                         return <p key={counter}>{error}</p>;
                     })}
+                    {serverError.email?.map((error, counter) => {
+                        return <p key={counter}>{error}</p>;
+                    })}
+                    {serverError.password?.map((error, counter) => {
+                        return <p key={counter}>{error}</p>;
+                    })}
+                    {serverError.password_confirmation?.map(
+                        (error, counter) => {
+                            return <p key={counter}>{error}</p>;
+                        }
+                    )}
                 </div>
                 <button
                     type="button"
