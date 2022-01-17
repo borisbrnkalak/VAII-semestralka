@@ -14,10 +14,10 @@
             <div class="paralax-text">
                 <p>Who are we</p>
                 <h1 style="
-                                                                  font-family: 'Roboto Condensed';
-                                                                  font-weight: 800;
-                                                                  font-size: 3.1em;
-                                                                ">
+                                                                      font-family: 'Roboto Condensed';
+                                                                      font-weight: 800;
+                                                                      font-size: 3.1em;
+                                                                    ">
                     GET IN TOUCH<br />
                     WITH US
                 </h1>
@@ -78,28 +78,31 @@
     </div>
 
     <div class="white">
-        <div class="containerr">
-            @auth
-                @if (auth()->user()->is_admin == 1)
-                    <div class="one-row">
-                        <div class="name-column main">
-                            <h2>Name</h2>
-                        </div>
-                        <div class="email-column main no-width">
-                            <h2>Email</h2>
-                        </div>
-                        <div class="message-column main">
-                            <h2>Message</h2>
-                        </div>
-                        <div class="icon-column main">
+        <div class="writed-contacts">
 
+            <div class="containerr">
+                @auth
+                    @if (auth()->user()->is_admin == 1)
+                        <div class="one-row">
+                            <div class="name-column main">
+                                <h2>Name</h2>
+                            </div>
+                            <div class="email-column main no-width">
+                                <h2>Email</h2>
+                            </div>
+                            <div class="message-column main">
+                                <h2>Message</h2>
+                            </div>
+                            <div class="icon-column main">
+
+                            </div>
                         </div>
-                    </div>
-                    @foreach ($contacts as $contact)
-                        @include('items.contact-item', compact('contact'))
-                    @endforeach
-                @endif
-            @endauth
+                        @foreach ($contacts as $contact)
+                            @include('items.contact-item', compact('contact'))
+                        @endforeach
+                    @endif
+                @endauth
+            </div>
         </div>
     </div>
 

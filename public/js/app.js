@@ -3092,7 +3092,7 @@ function Register() {
       } else {
         passwordEl.current.style.outlineColor = "red";
         setError(_objectSpread(_objectSpread({}, error), {}, {
-          password: "Ty Ďat"
+          password: "Weak password"
         }));
       }
     }
